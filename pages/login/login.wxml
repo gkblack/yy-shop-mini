@@ -1,0 +1,30 @@
+<view class="v1" >
+ 
+
+  <view class="vc"><button class="toRegister" bindtap="toRegister">注册</button></view>
+ <!-- v2父容器  子view使用绝对布局 -->
+   <view class="v2">
+     <view class="v3">
+     <!-- <view class="logoV"> -->
+     <image class="loginLogo" src="../../images/logo.png"></image>
+     <view>yyshop</view>
+     <!-- </view> -->
+     <!-- </view> -->
+     <!-- 手机号 -->
+     <view class="phoneCs">
+       <image src="../../images/account.png" class="ph"></image>
+       <input placeholder="请输入手机号" type="number" bindinput="phone" />
+     </view>
+     <!-- 密码 -->
+     <view class="passwordCs">
+       <image src="/images/password.png" class="ps"></image>
+       <input placeholder="请输入密码" type="password" bindinput="password" />
+     </view>
+     <!-- 登录按钮 -->
+     <view class="login">
+       <button class="btn-dl" type="primary" bindtap="goLogin">登录</button>
+     </view>
+     </view>
+   </view>
+ </view>
+  
