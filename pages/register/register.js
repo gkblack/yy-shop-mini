@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-const { register } = require('../../utils/requestAddress.js')
+const { register } = require('../../utils/api.js')
 const utils = require('../../utils/util.js')
 const app = getApp()
 let phone = ''
@@ -57,47 +57,20 @@ Page({
         password: password
       }).then(res => {
         console.log("success")
+        wx.showToast({
+          title: '注册成功',
+          duration: 4000,
+        }).then(res=>{
+          wx.navigateBack()
+        })
       }).catch(err => {
         console.log("fail")
         console.log(err)
+        wx.showToast({
+          title: err.data.message,
+          icon: 'error',
+        })
       })
-      // wx.request({
-      //   url: registerUrl,
-      //   data: {
-      //     phone: phone,
-      //     password: password
-      //   },
-      //   header: {'content-type':'application/json'},
-      //   method: 'POST',
-      //   dataType: 'json',
-      //   responseType: 'text',
-      //   success: (result)=>{
-      //     if(result.data.resultCode == 200){
-      //       wx.showToast({
-      //         icon: 'none',
-      //         title: '注册成功',
-      //       })
-      //       var session=db.session[result.data.token];
-      //       wx.reLaunch({
-      //         url: '/pages/login/login',
-      //       })
-      //       wx.switchTab({
-      //         url: '/pages/home/home',
-      //         success: function(res){
-      //           // success
-      //         },
-      //         fail: function() {
-      //           // fail
-      //         },
-      //         complete: function() {
-      //           // complete
-      //         }
-      //       })
-      //     }
-      //   },
-      //   fail: ()=>{},
-      //   complete: ()=>{}
-      // });
     }
   },
 })
