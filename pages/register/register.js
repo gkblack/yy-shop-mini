@@ -3,16 +3,16 @@
 const { register } = require('../../utils/requestAddress.js')
 const utils = require('../../utils/util.js')
 const app = getApp()
- let phone=''
- let password=''
+let phone = ''
+let password = ''
 Page({
   data: {
     phone: '',
     password: '',
-    clientHeight:''
+    clientHeight: ''
   },
-  onLoad(){
-    var that=this
+  onLoad() {
+    var that = this
     // wx.getSystemInfo({ 
     //   success: function (res) { 
     //     console.log(res.windowHeight)
@@ -23,42 +23,42 @@ Page({
     // }) 
   },
   //获取输入框内容
-  getPhone(e){
-    console.log("phone:"+ e.detail.value);
-    phone=e.detail.value
+  getPhone(e) {
+    console.log("phone:" + e.detail.value);
+    phone = e.detail.value
   },
-  getPassword(e){
-    console.log("password:"+e.detail.value)
-    password=e.detail.value
+  getPassword(e) {
+    console.log("password:" + e.detail.value)
+    password = e.detail.value
   },
   //注册事件
-  goRegister(){
+  goRegister() {
     console.log("goRegister")
     let flag = false  //表示账户是否存在,false为初始值
-    if(phone=='')
-    {
+    if (phone == '') {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '手机号不能为空',
       })
-    }else if(password==''){
+    } else if (password == '') {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '密码不能为空',
       })
-    }else if(!utils.isPhone(phone)){
+    } else if (!utils.isPhone(phone)) {
       wx.showToast({
         icon: 'none',
         title: '请填写正确的手机号',
       })
-    }else{
+    } else {
       var that = this;
       register({
         phone: phone,
         password: password
       }).then(res => {
-        console.log(res)
+        console.log("success")
       }).catch(err => {
+        console.log("fail")
         console.log(err)
       })
       // wx.request({
